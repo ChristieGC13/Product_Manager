@@ -29,7 +29,7 @@ module.exports.create = (req, res) => {
         res.json(product)
     })
     .catch(err => {
-        res.status(400).json(err);
+        res.status(400).json(err.errors);
     })
 }
 
@@ -42,7 +42,7 @@ module.exports.updateProduct = (req, res) => {
         description
     }, {new:true, useFindAndModify: true})
         .then(updatedProduct => res.json(updatedProduct))
-        .catch(err => res.status(400).json(err))
+        .catch(err => res.status(400).json(err.errors))
 }
 
 module.exports.detail = (req, res) => {
